@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "webpack"
+    "start": "webpack",
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "material-ui": "^0.18.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-tap-event-plugin": "^2.0.1"
