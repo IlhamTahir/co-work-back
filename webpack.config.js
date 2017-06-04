@@ -2,7 +2,7 @@
 let webpack = require('webpack');
 module.exports = {//注意这里是exports不是export
     devtool: 'eval-source-map',
-    entry: ['webpack/hot/dev-server', __dirname + "/src/AppBundle/Resources/views/main.js"],//唯一入口文件，就像Java中的main方法
+    entry: ['webpack/hot/dev-server', __dirname + "/src/AppBundle/Resources/views/main.jsx"],//唯一入口文件，就像Java中的main方法
     output: {//输出目录
         path: __dirname + "/src/AppBundle/Resources/public/js/",//打包后的js文件存放的地方
         filename: "app.js"//打包后的js文件名
