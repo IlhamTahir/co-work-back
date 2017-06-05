@@ -1,7 +1,8 @@
 import React from 'react'
 import RouterMap from "../router/router-map";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CircularLoading from '../components/circular-loading'
+import Header from "./common/header";
+
 
 
 
@@ -15,13 +16,18 @@ class App extends React.Component {
     }
     render() {
         return (
-            <MuiThemeProvider>
+            <div>
                 {
                     this.state.initDone
-                        ? <RouterMap/>
-                        : <CircularLoading/>
+                        ?
+                        <div>
+                            <Header/>
+                        <RouterMap/>
+                        </div>
+                        :<CircularLoading/>
+
                 }
-            </MuiThemeProvider>
+            </div>
         )
     }
     componentDidMount() {

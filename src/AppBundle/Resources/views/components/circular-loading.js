@@ -1,12 +1,16 @@
 import React from 'react';
 
 import CircularProgress from 'material-ui/CircularProgress';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 
 const CircularLoading = () => (
-    <div>
+
+
+    <MuiThemeProvider>
     <CircularProgress size={80} thickness={5} />
-    </div>
+    </MuiThemeProvider>
 );
 
-export default CircularLoading;
+export default CircularLoading
