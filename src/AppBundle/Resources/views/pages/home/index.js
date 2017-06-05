@@ -1,4 +1,5 @@
 import React from 'react'
+import StageBar from '../../components/stage-bar'
 
 
 class Home extends React.Component {
@@ -8,7 +9,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <p>dfsdfsda</p>
+                <StageBar/>
             </div>
         )
     }
