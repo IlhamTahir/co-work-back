@@ -1,3 +1,5 @@
 app_homepage:
-    path:     /
-    defaults: { _controller: AppBundle:Default:index }
+    path:     /{url}
+    defaults: { _controller: AppBundle:Default:index, url: null }
+    requirements:
+        url: .*
