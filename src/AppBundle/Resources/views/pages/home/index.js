@@ -1,6 +1,6 @@
 import React from 'react'
 import StageBar from '../../components/stage-bar'
-
+import Board from '../../components/board'
 
 class Home extends React.Component {
     constructor(props, context) {
@@ -9,7 +9,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <StageBar/>
+                <Board />
             </div>
         )
     }
