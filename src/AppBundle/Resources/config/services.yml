@@ -2,3 +2,5 @@ services:
 #    app.example:
 #        class: AppBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    app.project:
+        class: AppBundle\Service\Impl\ProjectServiceImpl
