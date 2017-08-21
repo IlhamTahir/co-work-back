@@ -8,8 +8,13 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\Project;
+
 interface ProjectService
 {
     public function getProject($id);
 
+    public function createProject($project);
+
+    public function searchProjects($conditions);
 }
