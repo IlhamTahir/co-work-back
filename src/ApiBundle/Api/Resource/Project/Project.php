@@ -18,4 +18,22 @@ class Project extends AbstractResource
     {
         return $id;
     }
+
+    public function add(ApiRequest $request)
+    {
+        $project = $request->request->all();
+        $this->getProjectService()->createProject($project);
+        return true;
+    }
+
+    public function search(ApiRequest $request)
+    {
+        return $this->getProjectService()->searchProjects(array());
+
+    }
+
+    private function getProjectService()
+    {
+        return $this->getContainer()->get('app.project');
+    }
 }

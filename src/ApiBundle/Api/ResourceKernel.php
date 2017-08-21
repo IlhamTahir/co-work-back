@@ -50,6 +50,8 @@ class ResourceKernel
 
     public function handle(Request $request)
     {
+        $this->parseRequestBody($request);
+
         $this->container->get('api_firewall')->handle($request);
 
         $this->biz['user'] = $this->container->get('security.token_storage')->getToken()->getUser();
@@ -58,6 +60,14 @@ class ResourceKernel
             return $this->batchRequest($request);
         } else {
             return $this->singleRequest($request);
+        }
+    }
+
+    private function parseRequestBody(Request $request)
+    {
+        if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
+            $data = json_decode($request->getContent(), true);
+            $request->request->replace(is_array($data) ? $data : array());
         }
     }
 
@@ -131,7 +141,7 @@ class ResourceKernel
         $pathMeta = $this->pathParser->parse($apiRequest);
         $resourceProxy = $this->resManager->create($pathMeta);
 
-        //$this->container->get('api_authentication_manager')->authenticate($resourceProxy, $pathMeta->getResMethod());
+//        $this->container->get('api_authentication_manager')->authenticate($resourceProxy, $pathMeta->getResMethod());
 
         return $this->invoke($apiRequest, $resourceProxy, $pathMeta);
     }

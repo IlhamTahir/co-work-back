@@ -169,8 +169,8 @@ abstract class AbstractResource
         return $biz['user'];
     }
 
-    protected function getServiceKernel()
+    protected function getContainer()
     {
-        return ServiceKernel::instance();
+        return $this->container;
     }
 }
