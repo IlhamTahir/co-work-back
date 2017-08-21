@@ -131,7 +131,7 @@ class ResourceKernel
         $pathMeta = $this->pathParser->parse($apiRequest);
         $resourceProxy = $this->resManager->create($pathMeta);
 
-        $this->container->get('api_authentication_manager')->authenticate($resourceProxy, $pathMeta->getResMethod());
+        //$this->container->get('api_authentication_manager')->authenticate($resourceProxy, $pathMeta->getResMethod());
 
         return $this->invoke($apiRequest, $resourceProxy, $pathMeta);
     }

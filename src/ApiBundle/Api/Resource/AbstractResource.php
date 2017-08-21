@@ -39,7 +39,6 @@ abstract class AbstractResource
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->biz = $container->get('biz');
     }
 
     public function generateUrl($route, $parameters = array(), $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH)
