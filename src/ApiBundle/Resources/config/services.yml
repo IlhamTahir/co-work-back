@@ -2,3 +2,26 @@ services:
     api_resource_kernel:
         class: ApiBundle\Api\ResourceKernel
         arguments: ['@service_container']
+    api.path.parser:
+        class: ApiBundle\Api\PathParser
+    api.resource.manager:
+        class: ApiBundle\Api\Resource\ResourceManager
+        arguments: ['@service_container']
+    api_firewall:
+        class: ApiBundle\Security\Firewall\Firewall
+        arguments:
+            - []
+    api_basic_authentication_listener:
+        class: ApiBundle\Security\Firewall\BasicAuthenticationListener
+        arguments: ['@service_container']
+    api_token_header_listener:
+        class: ApiBundle\Security\Firewall\XAuthTokenAuthenticationListener
+        arguments: ['@service_container']
+    api_exception_listener:
+        class: ApiBundle\EventListener\ExceptionListener
+        arguments: ['@service_container']
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, priority: 1024 }
+    api_response_viewer:
+        class: ApiBundle\Viewer
+        arguments: ['@service_container']

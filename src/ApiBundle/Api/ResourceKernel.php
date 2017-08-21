@@ -44,7 +44,6 @@ class ResourceKernel
     {
         $this->container = $container;
         $this->annotationReader = $container->get('annotation_reader');
-        $this->biz = $container->get('biz');
         $this->pathParser = $container->get('api.path.parser');
         $this->resManager = $container->get('api.resource.manager');
     }

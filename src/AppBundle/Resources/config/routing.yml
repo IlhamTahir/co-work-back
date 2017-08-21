@@ -2,4 +2,4 @@ app_homepage:
     path:     /{url}
     defaults: { _controller: AppBundle:Default:index, url: null }
     requirements:
-        url: .*
+        url: ^api/*
