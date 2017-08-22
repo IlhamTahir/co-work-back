@@ -22,16 +22,16 @@ class ResourceProxy
     public function __call($method, $arguments)
     {
         $result = call_user_func_array(array($this->resource, $method), $arguments);
-        if (in_array($method, $this->resource->supportMethods()) && $this->getFieldFilter($method)) {
-            $this->filterResult($method, $result);
-        }
-
         if ($method == AbstractResource::METHOD_SEARCH) {
             foreach ($result as $key => $item) {
                 $result[$key] = $this->normalizeObjectResult($item);
             }
         } else {
             $result = $this->normalizeObjectResult($result);
+        }
+
+        if (in_array($method, $this->resource->supportMethods()) && $this->getFieldFilter($method)) {
+            $this->filterResult($method, $result);
         }
 
         return $result;
