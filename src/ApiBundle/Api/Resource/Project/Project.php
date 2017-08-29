@@ -29,7 +29,6 @@ class Project extends AbstractResource
     public function search(ApiRequest $request)
     {
         return $this->getProjectService()->searchProjects(array());
-
     }
 
     private function getProjectService()
