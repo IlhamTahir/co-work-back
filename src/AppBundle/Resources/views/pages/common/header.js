@@ -11,7 +11,7 @@ class Header extends React.Component {
         return (
             <MuiThemeProvider>
             <AppBar
-                title="Title"
+                title="CoWork"
                 iconClassNameRight="muidocs-icon-navigation-expand-more"
             />
             </MuiThemeProvider>
