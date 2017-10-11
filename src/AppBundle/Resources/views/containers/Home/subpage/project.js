@@ -1,6 +1,6 @@
 import React from 'react'
 import {getProjects} from '../../../fetch/home/home'
-import Projects from '../../../components/Projects/index'
+import Projects from '../../../components/ProjectList/index'
 import CircleLoading from '../../../components/circular-loading'
 
 class Project extends React.Component {

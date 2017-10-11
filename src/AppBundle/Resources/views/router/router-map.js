@@ -2,8 +2,8 @@ import React from 'react'
 import { BrowserRouter as Router , Switch, Route } from 'react-router-dom'
 
 
-import Home from '../pages/home'
-import NotFound from '../pages/404'
+import Home from '../containers/Home'
+import NotFound from '../containers/404'
 
 
 class RouterMap extends React.Component {

@@ -1,6 +1,5 @@
 import React from 'react'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 
@@ -10,7 +9,7 @@ class Projects extends React.Component {
         super(props, context);
     }
     render() {
-        const data = this.props.data
+        const data = this.props.data;
         return (
             <Grid fluid>
                 <Row>
@@ -20,7 +19,7 @@ class Projects extends React.Component {
                             <CardMedia
                                 overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
                             >
-                                <img src="images/nature-600-337.jpg" alt="" />
+                                <img src="" alt="" />
                             </CardMedia>
                             <CardTitle title={item.name} />
                             <CardText>

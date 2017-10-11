@@ -1,5 +1,4 @@
 import React from 'react'
-import {get} from '../../fetch/get'
 import Project from './subpage/project'
 
 class Home extends React.Component {
