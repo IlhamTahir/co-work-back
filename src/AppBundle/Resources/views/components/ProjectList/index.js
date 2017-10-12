@@ -1,6 +1,7 @@
 import React from 'react'
-import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Grid, Row } from 'react-flexbox-grid';
+
+import ProjectGrid from "./ProjectGrid/index";
 
 
 
@@ -14,19 +15,9 @@ class Projects extends React.Component {
             <Grid fluid>
                 <Row>
                 {data.map((item, index) => {
-                    return <Col  xs={6} md={3} key={index}>
-                        <Card>
-                            <CardMedia
-                                overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
-                            >
-                                <img src="" alt="" />
-                            </CardMedia>
-                            <CardTitle title={item.name} />
-                            <CardText>
-                                {item.description}
-                            </CardText>
-                        </Card>
-                    </Col>
+                    return (
+                        <ProjectGrid key={index} data={item}/>
+                    )
                 })}
                 </Row>
             </Grid>
