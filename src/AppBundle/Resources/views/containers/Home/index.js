@@ -1,6 +1,5 @@
 import React from 'react'
-import StageBar from '../../components/stage-bar'
-
+import Project from './subpage/project'
 
 class Home extends React.Component {
     constructor(props, context) {
@@ -9,10 +8,11 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-
+                <Project/>
             </div>
         )
     }
+
 }
 
 export default Home

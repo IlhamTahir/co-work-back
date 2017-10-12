@@ -1,7 +1,9 @@
 import React from 'react'
 import RouterMap from "../router/router-map";
 import CircularLoading from '../components/circular-loading'
-import Header from "./common/header";
+import Header from "./Common/header";
+import Home from "./Home/index";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 
@@ -17,6 +19,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <MuiThemeProvider>
                 {
                     this.state.initDone
                         ?
@@ -27,6 +30,7 @@ class App extends React.Component {
                         :<CircularLoading/>
 
                 }
+                </MuiThemeProvider>
             </div>
         )
     }
