@@ -1,8 +1,7 @@
 import React from 'react'
 import RouterMap from "../router/router-map";
 import CircularLoading from '../components/circular-loading'
-import Header from "./Common/header";
-import Home from "./Home/index";
+import Header from "./Common/Header/index";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
