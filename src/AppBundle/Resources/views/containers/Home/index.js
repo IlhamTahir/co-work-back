@@ -1,5 +1,6 @@
 import React from 'react'
-import Project from './subpage/project'
+import ProjectList from './subpage/ProjectsArea'
+import './style.less'
 
 class Home extends React.Component {
     constructor(props, context) {
@@ -8,7 +9,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <Project/>
+                <ProjectList/>
             </div>
         )
     }
