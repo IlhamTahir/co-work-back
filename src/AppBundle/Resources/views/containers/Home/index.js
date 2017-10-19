@@ -1,5 +1,6 @@
 import React from 'react'
 import ProjectList from './subpage/ProjectsArea'
+import './style.less'
 
 class Home extends React.Component {
     constructor(props, context) {

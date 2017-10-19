@@ -12,11 +12,6 @@ class ProjectGrid extends React.Component {
         return (
             <Col  xs={6} md={3}>
                 <Card>
-                    <CardMedia
-                        overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
-                    >
-                        <img src="" alt="" />
-                    </CardMedia>
                     <CardTitle title={data.name} />
                     <CardText>
                         {data.description}

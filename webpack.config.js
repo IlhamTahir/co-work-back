@@ -16,15 +16,23 @@ module.exports = {//注意这里是exports不是export
                 exclude: /node_modules/,//屏蔽不需要处理的文件（文件夹）（可选）
                 loader: 'babel-loader'//loader的名称（必须）
             },
+            { test: /\.less$/, exclude: /node_modules/, loader: 'style-loader!css-loader!less-loader' },
             {
-                test: /\.css$/,
+                test: /\.(css)$/,
                 loader: 'style-loader!css-loader',
                 include: /flexboxgrid/
+
             }
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()//热模块替换插件
+        new webpack.HotModuleReplacementPlugin(),//热模块替换插件
+        new webpack.LoaderOptionsPlugin({
+            test: /\.(css|less)$/,
+            options: {
+                postcss: require('autoprefixer')
+            }
+        })
     ],
     //webpack-dev-server配置
     devServer: {

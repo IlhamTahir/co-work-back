@@ -12,7 +12,7 @@ class ProjectsArea extends React.Component {
     }
     render() {
         return (
-           <div>
+           <div className="project-area">
                {
                    this.state.data.length
                    ?  <ProjectList data={this.state.data}/>
