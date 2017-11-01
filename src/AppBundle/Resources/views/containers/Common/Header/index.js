@@ -1,7 +1,6 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import IconButton from 'material-ui/IconButton';
 
 
 class Header extends React.Component {
@@ -13,7 +12,6 @@ class Header extends React.Component {
             <MuiThemeProvider>
             <AppBar
                 title="CoWork"
-                iconElementRight={<IconButton iconClassName="fa fa-user"/>}
             />
             </MuiThemeProvider>
         )

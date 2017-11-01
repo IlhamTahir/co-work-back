@@ -1,6 +1,9 @@
 import React from 'react'
 import ProjectList from './subpage/ProjectsArea'
 import './style.less'
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import ProjectDialog from './subpage/ProjectDialog';
 
 class Home extends React.Component {
     constructor(props, context) {
@@ -10,6 +13,10 @@ class Home extends React.Component {
         return (
             <div>
                 <ProjectList/>
+                <FloatingActionButton>
+                    <ContentAdd />
+                </FloatingActionButton>
+                <ProjectDialog/>
             </div>
         )
     }

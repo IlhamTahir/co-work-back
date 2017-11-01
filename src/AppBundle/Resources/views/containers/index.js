@@ -4,10 +4,6 @@ import CircularLoading from '../components/circular-loading'
 import Header from "./Common/Header/index";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-
-
-
-
 class App extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -34,11 +30,9 @@ class App extends React.Component {
         )
     }
     componentDidMount() {
-        setTimeout(() => {
             this.setState({
                 initDone: true
             })
-        }, 1000)
     }
 }
 export default App
