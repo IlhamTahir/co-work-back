@@ -2,7 +2,6 @@
 
 namespace AppBundle\Service;
 
-
 use Symfony\Component\DependencyInjection\ContainerAware;
 
 class BaseService extends ContainerAware

@@ -22,8 +22,7 @@ class Project extends AbstractResource
     public function add(ApiRequest $request)
     {
         $project = $request->request->all();
-        $this->getProjectService()->createProject($project);
-        return true;
+        return $this->getProjectService()->createProject($project);
     }
 
     public function search(ApiRequest $request)

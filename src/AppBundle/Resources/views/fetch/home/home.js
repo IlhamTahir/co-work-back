@@ -6,9 +6,11 @@ export function getProjects() {
     return get('/api/project')
 }
 
-export function postProject(title, description) {
+export function postProject(name, description) {
     const result = post('/api/project', {
-        title: title,
-        description: description
+        name: name,
+        description: description,
+
     })
+    return result;
 }
