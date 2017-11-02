@@ -20,7 +20,7 @@ class Home extends React.Component {
                 <FloatingActionButton onClick={()=>this.openProjectDialog()}>
                     <ContentAdd />
                 </FloatingActionButton>
-                <ProjectList loadingStatus={this.state.loadingStatus}/>
+                <ProjectList loadingStatus={this.state.loadingStatus} transferLoadingStatus = {loadingStatus => this.transferLoadingStatus(loadingStatus)}/>
 
                 <ProjectDialog projectDialogStatus={this.state.projectDialogStatus} transferDialogStatus = {projectDialogStatus => this.transferDialogStatus(projectDialogStatus)}
                                transferLoadingStatus = {loadingStatus => this.transferLoadingStatus(loadingStatus)}/>

@@ -51,6 +51,7 @@ class ProjectsArea extends React.Component {
                     loading: false
                 })
             }
+            this.props.transferLoadingStatus(false)
         })
     }
 
