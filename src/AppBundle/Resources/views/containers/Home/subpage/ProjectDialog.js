@@ -2,6 +2,9 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import { Grid, Row } from 'react-flexbox-grid';
+
 
 
 class ProjectDialog extends React.Component {
@@ -11,21 +14,16 @@ class ProjectDialog extends React.Component {
             open: false
         };
     }
-
-
-
-
     render() {
         const actions = [
             <FlatButton
-                label="Cancel"
+                label="提交"
                 primary={true}
                 onClick={()=>this.handleClose()}
             />,
             <FlatButton
-                label="Submit"
-                primary={true}
-                keyboardFocused={true}
+                label="取消"
+                primary={false}
                 onClick={()=>this.handleClose()}
             />,
         ];
@@ -33,13 +31,30 @@ class ProjectDialog extends React.Component {
             <div>
                 <RaisedButton label="Dialog" onClick={()=>this.handleOpen()} />
                 <Dialog
-                    title="Dialog With Actions"
+                    title="创建项目"
                     actions={actions}
                     modal={false}
                     open={this.state.open}
                     onRequestClose={()=>this.handleClose()}
                 >
-                    The actions in this window were passed in as an array of React objects.
+                    <Grid fluid>
+                        <Row>
+                    <TextField
+                        hintText="请输入项目名称"
+                        floatingLabelText="项目名称"
+                        fullWidth={true}
+                    />
+                        </Row>
+                        <Row>
+                    <TextField
+                        hintText="请输入项目描述"
+                        floatingLabelText="项目描述"
+                        fullWidth={true}
+                        multiLine={true}
+                        rowsMax={6}
+                    />
+                        </Row>
+                    </Grid>
                 </Dialog>
             </div>
         );
