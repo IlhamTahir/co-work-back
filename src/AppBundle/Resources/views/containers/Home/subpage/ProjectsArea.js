@@ -7,16 +7,18 @@ class ProjectsArea extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            data: []
+            data: [],
+            loading: false
         }
     }
     render() {
         return (
            <div className="project-area">
                {
-                   this.state.data.length
-                   ?  <ProjectList data={this.state.data}/>
-                       : <CircleLoading/>
+                   this.state.loading
+                   ? <CircleLoading/>
+                   : <ProjectList data={this.state.data}/>
+
                }
 
            </div>
@@ -30,10 +32,33 @@ class ProjectsArea extends React.Component {
             const data = json;
             if (data.length) {
                 this.setState({
-                    data : data
+                    data : data,
+                    loading: false
                 })
             }
         })
+    }
+
+    reloadData(){
+        const result = getProjects()
+        result.then((res) => {
+            return res.json()
+        }).then((json) => {
+            const data = json;
+            if (data.length) {
+                this.setState({
+                    data : data,
+                    loading: false
+                })
+            }
+        })
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            loading: nextProps.loadingStatus
+        });
+        this.reloadData()
     }
 }
 

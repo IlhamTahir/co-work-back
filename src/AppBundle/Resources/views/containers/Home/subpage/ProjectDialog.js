@@ -12,11 +12,11 @@ const customContentStyle = {
 };
 
 class ProjectDialog extends React.Component {
-    constructor() {
-        super();
+    constructor(props, context) {
+        super(props, context);
         this.state = {
-            open: false
-        };
+            open: this.props.projectDialogStatus
+        }
     }
     render() {
         const actions = [
@@ -33,7 +33,6 @@ class ProjectDialog extends React.Component {
         ];
         return (
             <div>
-                <RaisedButton label="Dialog" onClick={()=>this.handleOpen()} />
                 <Dialog
                     title="创建项目"
                     actions={actions}
@@ -79,6 +78,7 @@ class ProjectDialog extends React.Component {
         this.setState({
             open:false
         })
+        this.props.transferDialogStatus(false)
     }
 
     submitDialog(){
@@ -89,8 +89,17 @@ class ProjectDialog extends React.Component {
             return res.json()
         }).then((json) => {
             const data = json;
-            console.log(data)
+            if (data) {
+                this.handleClose();
+                this.props.transferLoadingStatus(true)
+            }
         })
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            open: nextProps.projectDialogStatus
+        });
     }
 
 
