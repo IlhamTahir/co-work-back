@@ -1,3 +1,5 @@
+import { FETCH_PROJECTS, RECEIVE_PROJECTS } from '../actions/projectList'
+
 const initialState = {
     data:[],
     loading: true,
@@ -6,24 +8,17 @@ const initialState = {
 
 export default function projectList(state = initialState, action) {
     switch (action.type) {
-        case 'LOAD_PROJECTS': {
+        case FETCH_PROJECTS: {
             return {
                 loading: true,
                 error: false
             }
         }
-        case 'LOAD_PROJECTS_SUCCESS': {
+        case RECEIVE_PROJECTS: {
             return {
-                data: action.payload,
-                loading: true,
-                error: false
-            }
-        }
-
-        case 'LOAD_PROJECTS_ERROR': {
-            return {
+                data: action.data,
                 loading: false,
-                error: true
+                error: false
             }
         }
 
