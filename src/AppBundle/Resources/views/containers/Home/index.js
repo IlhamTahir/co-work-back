@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import {reloadProjects} from '../../actions/projectList'
 import RaisedButton from 'material-ui/RaisedButton';
 import { show } from 'redux-modal'
-import { bindActionCreators } from 'redux'
 
 
 
@@ -17,8 +16,7 @@ class Home extends React.Component {
         return (
             <div>
                 <ProjectList/>
-                <RaisedButton label="Default" onClick={()=>this.handleOpen('test')}/>
-
+                <RaisedButton label="Default" onClick={()=>this.handleOpen('project-dialog')}/>
                 <ProjectDialog onSubmit={this.handleSubmit.bind(this)}/>
             </div>
         )
@@ -31,7 +29,7 @@ class Home extends React.Component {
     }
 
     handleOpen(name){
-        this.props.show(name, { message: `This is a ${name} modal` })
+        this.props.dispatch(show(name, { message: `This is a ${name} modal` }))
     };
 
 
@@ -39,5 +37,4 @@ class Home extends React.Component {
 
 
 
-export default connect(null, dispatch => bindActionCreators({ show }, dispatch)
-)(Home)
+export default connect()(Home)

@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {reduxForm, initialize, Field} from 'redux-form'
-import { connectModal } from 'redux-modal'
+import {connectModal} from 'redux-modal'
 
 
 const customContentStyle = {
@@ -39,8 +39,7 @@ const renderTextField = ({
 
 class ProjectDialog extends React.Component {
     render() {
-        const {handleSubmit, pristine, reset, submitting} = this.props
-        const { show, handleHide, message } = this.props
+        const {handleSubmit, pristine, reset, submitting, show, handleHide, message} = this.props
 
         const actions = [
             <FlatButton
@@ -120,4 +119,4 @@ ProjectDialog = reduxForm({
     validate
 })(ProjectDialog);
 
-export default connectModal({ name: 'test' })(ProjectDialog)
+export default connectModal({name: 'project-dialog'})(ProjectDialog)
