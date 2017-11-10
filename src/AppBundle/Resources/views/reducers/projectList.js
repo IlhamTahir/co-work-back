@@ -1,4 +1,4 @@
-import { FETCH_PROJECTS, RECEIVE_PROJECTS } from '../actions/projectList'
+import { REQUEST_PROJECTS, RECEIVE_PROJECTS } from '../actions/projectList'
 
 const initialState = {
     data:[],
@@ -8,8 +8,9 @@ const initialState = {
 
 export default function projectList(state = initialState, action) {
     switch (action.type) {
-        case FETCH_PROJECTS: {
+        case REQUEST_PROJECTS: {
             return {
+                data:[],
                 loading: true,
                 error: false
             }

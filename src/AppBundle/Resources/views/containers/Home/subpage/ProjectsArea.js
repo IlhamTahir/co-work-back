@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react'
-import {getProjects} from '../../../fetch/home/home'
 import ProjectList from '../../../components/ProjectList/index'
 import CircleLoading from '../../../components/circular-loading'
 import { connect } from 'react-redux'

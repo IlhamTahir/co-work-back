@@ -5,7 +5,6 @@ import {getProjects} from '../fetch/home/home'
 
 export const REQUEST_PROJECTS = 'REQUEST_PROJECTS';
 export const RECEIVE_PROJECTS = 'RECEIVE_PROJECTS';
-export const LOAD_PROJECTS_ERROR = 'LOAD_PROJECTS_ERROR';
 
 function requestProjects() {
     return {

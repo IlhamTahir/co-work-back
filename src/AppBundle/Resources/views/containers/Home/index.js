@@ -1,27 +1,24 @@
 import React from 'react'
 import ProjectList from './subpage/ProjectsArea'
 import './style.less'
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 import ProjectDialog from './subpage/ProjectDialog';
 import { initialize } from 'redux-form';
 import { connect } from 'react-redux';
+import {reloadProjects} from '../../actions/projectList'
+import RaisedButton from 'material-ui/RaisedButton';
+import { show } from 'redux-modal'
+import { bindActionCreators } from 'redux'
 
 
 
 class Home extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            loadingStatus: false,
-            projectDialogStatus: false,
-            msg:''
-        }
-    }
+
     render() {
         return (
             <div>
                 <ProjectList/>
+                <RaisedButton label="Default" onClick={()=>this.handleOpen('test')}/>
+
                 <ProjectDialog onSubmit={this.handleSubmit.bind(this)}/>
             </div>
         )
@@ -30,19 +27,17 @@ class Home extends React.Component {
     handleSubmit(data) {
         console.log('Submission received!', data);
         this.props.dispatch(initialize('project', {})); // clear form
+        this.props.dispatch(reloadProjects())
     }
 
-    transferDialogStatus(projectDialogStatus) {
-        this.setState({
-            projectDialogStatus
-        });
-    }
+    handleOpen(name){
+        this.props.show(name, { message: `This is a ${name} modal` })
+    };
 
-    transferLoadingStatus(loadingStatus) {
-        this.setState({
-            loadingStatus
-        });
-    }
+
 }
 
-export default connect()(Home)
+
+
+export default connect(null, dispatch => bindActionCreators({ show }, dispatch)
+)(Home)
