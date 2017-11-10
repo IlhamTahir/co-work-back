@@ -4,6 +4,8 @@ import './style.less'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ProjectDialog from './subpage/ProjectDialog';
+import { initialize } from 'redux-form';
+import { connect } from 'react-redux';
 
 
 
@@ -19,15 +21,15 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <FloatingActionButton onClick={()=>this.openProjectDialog()}>
-                    <ContentAdd />
-                </FloatingActionButton>
-                <ProjectList loadingStatus={this.state.loadingStatus} transferLoadingStatus = {loadingStatus => this.transferLoadingStatus(loadingStatus)}/>
-
-                <ProjectDialog projectDialogStatus={this.state.projectDialogStatus} transferDialogStatus = {projectDialogStatus => this.transferDialogStatus(projectDialogStatus)}
-                               transferLoadingStatus = {loadingStatus => this.transferLoadingStatus(loadingStatus)}/>
+                <ProjectList/>
+                <ProjectDialog onSubmit={this.handleSubmit.bind(this)}/>
             </div>
         )
+    }
+
+    handleSubmit(data) {
+        console.log('Submission received!', data);
+        this.props.dispatch(initialize('project', {})); // clear form
     }
 
     transferDialogStatus(projectDialogStatus) {
@@ -41,19 +43,6 @@ class Home extends React.Component {
             loadingStatus
         });
     }
-
-    openProjectDialog(){
-        this.setState({
-            projectDialogStatus: true
-        })
-    }
-
-    reloadProjectList(){
-        this.setState({
-            loadingStatus: true
-        })
-    }
-
 }
 
-export default Home
+export default connect()(Home)
