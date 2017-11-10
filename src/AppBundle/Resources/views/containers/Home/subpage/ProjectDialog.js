@@ -2,88 +2,90 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import { reduxForm, initialize, Field } from 'redux-form';
+import {Grid, Row, Col} from 'react-flexbox-grid';
+import {reduxForm, initialize, Field} from 'redux-form';
 
 const customContentStyle = {
     width: '600px',
 };
+const validate = values => {
+    const errors = {};
+    const requiredFields = [
+        'name',
+        'description'
+    ];
+    requiredFields.forEach(field => {
+        if (!values[field]) {
+            errors[field] = '请填写' + field
+        }
+    });
+    return errors
+};
+
+const renderTextField = ({
+                             input,
+                             label,
+                             meta: {touched, error}
+                         }) => (
+    <TextField
+        hintText={label}
+        floatingLabelText={label}
+        errorText={touched && error}
+        {...input}
+    />
+)
 
 class ProjectDialog extends React.Component {
     render() {
+        const {handleSubmit, pristine, reset, submitting} = this.props
 
-
-        const renderTextField = ({
-                                     input,
-                                     hintText,
-                                     floatingLabelText,
-                                    fullWidth,
-                                     row,
-                                     meta: { touched, error }
-                                 }) => (
-            <TextField
-                hintText={hintText}
-                floatingLabelText={floatingLabelText}
-                errorText={touched && error}
-                fullWidth={fullWidth}
-                {...input}
-            />
-        )
-
-
-        const { handleSubmit,  reset, submitting } = this.props
         const actions = [
             <FlatButton
                 label="提交"
                 primary={true}
                 onClick={handleSubmit}
-                disabled={ submitting}
+                disabled={submitting}
             />,
             <FlatButton
                 label="取消"
                 secondary={true}
                 disabled={submitting}
+                onClick={reset}
             />,
         ];
 
         return (
-                <Dialog
-                    title="创建项目"
-                    actions={actions}
-                    modal={false}
-                    open={true}
-                    //onRequestClose={()=>this.handleClose()}
-                    contentStyle={customContentStyle}
-                >
-                    <form onSubmit={handleSubmit} className="project">
+            <Dialog
+                title="创建项目"
+                actions={actions}
+                modal={false}
+                open={true}
+                //onRequestClose={()=>this.handleClose()}
+                contentStyle={customContentStyle}
+            >
+                <form onSubmit={handleSubmit} className="project">
                     <Grid fluid>
                         <Row>
                             <Col md={12}>
 
-                    <Field
-                        name="name"
-                        component={renderTextField}
-                        hintText="请输入项目名称"
-                        floatingLabelText="项目名称"
-                        fullWidth={true}
-                    />
+                                <Field
+                                    name="name"
+                                    component={renderTextField}
+                                    label="项目名称"
+                                />
                             </Col>
                             <Col md={12}>
-                    <Field
-                        name="description"
-                        component={renderTextField}
-                        hintText="请输入项目描述"
-                        floatingLabelText="项目描述"
-                        fullWidth={true}
-                        multiLine={true}
-                        rowsMax={6}
-                    />
+                                <Field
+                                    name="description"
+                                    component={renderTextField}
+                                    label="项目名称"
+                                />
                             </Col>
                         </Row>
                     </Grid>
-                    </form>
+                </form>
 
-                </Dialog>
+            </Dialog>
         );
     }
 
@@ -111,7 +113,8 @@ class ProjectDialog extends React.Component {
 }
 
 ProjectDialog = reduxForm({
-    form: 'project'
+    form: 'project',
+    validate
 })(ProjectDialog);
 
 export default ProjectDialog
