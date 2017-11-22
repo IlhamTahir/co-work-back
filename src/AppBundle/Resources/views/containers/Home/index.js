@@ -5,8 +5,8 @@ import ProjectDialog from './subpage/ProjectDialog';
 import { initialize } from 'redux-form';
 import { connect } from 'react-redux';
 import {reloadProjects} from '../../actions/projectList'
-import RaisedButton from 'material-ui/RaisedButton';
-import { show } from 'redux-modal'
+import { hide } from 'redux-modal'
+import {postProject} from '../../fetch/home/home'
 
 
 
@@ -16,7 +16,6 @@ class Home extends React.Component {
         return (
             <div>
                 <ProjectList/>
-                <RaisedButton label="Default" onClick={()=>this.handleOpen('project-dialog')}/>
                 <ProjectDialog onSubmit={this.handleSubmit.bind(this)}/>
             </div>
         )
@@ -24,15 +23,11 @@ class Home extends React.Component {
 
     handleSubmit(data) {
         console.log('Submission received!', data);
+        postProject(data.name, data.description);
+        this.props.dispatch(hide('project-dialog'));
         this.props.dispatch(initialize('project', {})); // clear form
         this.props.dispatch(reloadProjects())
     }
-
-    handleOpen(name){
-        this.props.dispatch(show(name, { message: `This is a ${name} modal` }))
-    };
-
-
 }
 
 
