@@ -13,7 +13,7 @@ module.exports = {//注意这里是exports不是export
         loaders: [
             {test: /\.(js|jsx)$/,exclude: /node_modules/, loader: 'babel-loader'},
             {test: /\.less$/, exclude: /node_modules/, loader: 'style-loader!css-loader!less-loader'},
-            {test: /\.css$/, loader: 'style-loader!css-loader', include: /flexboxgrid/, exclude: /node_modules/},
+            {test: /\.css$/, loader: 'style-loader!css-loader', include: /flexboxgrid/},
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' } // 限制大小小于5k
         ]
     },

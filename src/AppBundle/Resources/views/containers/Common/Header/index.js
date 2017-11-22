@@ -1,8 +1,8 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import IconButton from 'material-ui/IconButton';
-
+import FlatButton from 'material-ui/FlatButton';
+import { show } from 'redux-modal'
+import { connect } from 'react-redux';
 
 class Header extends React.Component {
     constructor(props, context) {
@@ -10,14 +10,18 @@ class Header extends React.Component {
     }
     render() {
         return (
-            <MuiThemeProvider>
             <AppBar
                 title="CoWork"
-                iconElementRight={<IconButton iconClassName="fa fa-user"/>}
+                iconElementRight={<FlatButton label="新建项目" onClick={()=>this.handleOpen('project-dialog')}/>}
             />
-            </MuiThemeProvider>
         )
     }
+
+    handleOpen(name){
+        this.props.dispatch(show(name, { message: `This is a ${name} modal` }))
+    };
 }
 
-export default Header
+
+
+export default connect()(Header)

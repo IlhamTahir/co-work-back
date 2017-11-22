@@ -2,6 +2,8 @@
 
 namespace ApiBundle\Api\Resource;
 
+use Doctrine\ORM\Mapping\Entity;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
@@ -24,10 +26,14 @@ class ResourceProxy
         $result = call_user_func_array(array($this->resource, $method), $arguments);
         if ($method == AbstractResource::METHOD_SEARCH) {
             foreach ($result as $key => $item) {
-                $result[$key] = $this->normalizeObjectResult($item);
+                if (is_object($item)) {
+                    $result[$key] = $this->normalizeObjectResult($item);
+                }
             }
         } else {
-            $result = $this->normalizeObjectResult($result);
+            if (is_object($result)) {
+                $result = $this->normalizeObjectResult($result);
+            }
         }
 
         if (in_array($method, $this->resource->supportMethods()) && $this->getFieldFilter($method)) {

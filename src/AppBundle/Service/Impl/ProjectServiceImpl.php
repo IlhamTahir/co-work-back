@@ -36,6 +36,7 @@ class ProjectServiceImpl extends BaseService implements ProjectService
         $em = $this->getDoctrine()->getManager();
         $em->persist($data);
         $em->flush();
+        return $data;
     }
 
     public function searchProjects($conditions)
