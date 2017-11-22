@@ -1,5 +1,6 @@
 //__dirname是node.js中的一个全局变量，它指向当前执行脚本所在的目录
 let webpack = require('webpack');
+
 module.exports = {//注意这里是exports不是export
     devtool: 'eval-source-map',
     entry: ['webpack/hot/dev-server', __dirname + "/src/AppBundle/Resources/views/main.jsx"],//唯一入口文件，就像Java中的main方法
@@ -13,7 +14,14 @@ module.exports = {//注意这里是exports不是export
         loaders: [
             {test: /\.(js|jsx)$/,exclude: /node_modules/, loader: 'babel-loader'},
             {test: /\.less$/, exclude: /node_modules/, loader: 'style-loader!css-loader!less-loader'},
-            {test: /\.css$/, loader: 'style-loader!css-loader', include: /flexboxgrid/},
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader',
+                include: [
+                    /flexboxgrid/,
+
+                ]
+            },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' } // 限制大小小于5k
         ]
     },

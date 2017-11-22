@@ -1,5 +1,6 @@
 import React from 'react'
-import { Grid, Row } from 'react-flexbox-grid';
+//import { Grid, Row } from 'react-flexbox-grid';
+import { Row } from 'antd';
 
 import ProjectGrid from "./ProjectGrid/index";
 
@@ -12,15 +13,13 @@ class Projects extends React.Component {
     render() {
         const data = this.props.data;
         return (
-            <Grid fluid>
-                <Row>
+                <Row gutter={16}>
                 {data.map((item, index) => {
                     return (
                         <ProjectGrid key={index} data={item}/>
                     )
                 })}
                 </Row>
-            </Grid>
         )
     }
 }

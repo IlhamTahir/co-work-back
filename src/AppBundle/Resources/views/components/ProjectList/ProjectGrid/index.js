@@ -1,7 +1,6 @@
 import React from 'react'
-import {Card, CardMedia, CardTitle, CardText, CardActions} from 'material-ui/Card';
-import { Col } from 'react-flexbox-grid';
-import Chip from 'material-ui/Chip';
+import { Col } from 'antd';
+import { Card } from 'antd';
 import {Link} from 'react-router-dom'
 
 import './style.less'
@@ -13,17 +12,12 @@ class ProjectGrid extends React.Component {
     render() {
         const data = this.props.data;
         return (
-            <Col  xs={6} md={3}>
+            <Col md={6}>
                 <Link to={'/project/' + data.id}>
-                <Card className="project-grid">
-                    <CardTitle title={data.name} />
-                    <CardText>
-                        {data.description}
-                    </CardText>
-                    <CardActions>
-                        <Chip>2017-11-26</Chip>
-                    </CardActions>
-                </Card>
+                    <Card className="project-grid">
+                        <h1>{data.name}</h1>
+                        <p>{data.description}</p>
+                    </Card>
                 </Link>
             </Col>
         )
