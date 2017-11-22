@@ -16,7 +16,6 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <MuiThemeProvider>
                 {
                     this.state.initDone
                         ?
@@ -34,7 +33,6 @@ class App extends React.Component {
                         :<Spin size="large"/>
 
                 }
-                </MuiThemeProvider>
             </div>
         )
     }
