@@ -1,8 +1,10 @@
 import React from 'react'
 import RouterMap from "../router/router-map";
-import CircularLoading from '../components/circular-loading'
-import Header from "./Common/Header/index";
+//import Header from "./Common/Header/index";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Layout, Menu } from 'antd';
+const { Header, Content, Footer } = Layout;
+import { Spin } from 'antd';
 
 class App extends React.Component {
     constructor(props, context) {
@@ -14,18 +16,23 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <MuiThemeProvider>
                 {
                     this.state.initDone
                         ?
-                        <div>
-                            <Header/>
-                        <RouterMap/>
-                        </div>
-                        :<CircularLoading/>
+                        <Layout className="layout">
+                            <Header>
+                              <h1>首页</h1>
+                            </Header>
+                            <Content style={{ padding: '0 50px' }}>
+                                <RouterMap/>
+                            </Content>
+                            <Footer style={{ textAlign: 'center' }}>
+                                CoWork ©2017
+                            </Footer>
+                        </Layout>
+                        :<Spin size="large"/>
 
                 }
-                </MuiThemeProvider>
             </div>
         )
     }

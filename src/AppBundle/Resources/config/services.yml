@@ -6,3 +6,7 @@ services:
         class: AppBundle\Service\Impl\ProjectServiceImpl
         calls:
             - [setContainer, ['@service_container']]
+    app.user_story:
+        class: AppBundle\Service\Impl\UserStoryServiceImpl
+        calls:
+            - [setContainer, ['@service_container']]
