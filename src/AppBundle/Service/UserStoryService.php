@@ -8,11 +8,11 @@
 
 namespace AppBundle\Service;
 
-interface UserStory
+interface UserStoryService
 {
     public function getUserStory($id);
 
-    public function createUserStory($project);
+    public function createUserStory($userStory);
 
     public function searchUserStories($conditions);
 }

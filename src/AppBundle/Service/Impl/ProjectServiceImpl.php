@@ -44,6 +44,7 @@ class ProjectServiceImpl extends BaseService implements ProjectService
         // TODO: Implement searchProjects() method.
         $em = $this->getDoctrine()->getManager();
         $projects = $em->getRepository('AppBundle:Project')->findAll();
+
         return $projects;
     }
 }

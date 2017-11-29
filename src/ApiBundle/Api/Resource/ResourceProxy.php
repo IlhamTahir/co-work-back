@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
+use Symfony\Component\Serializer\Serializer;
 
 class ResourceProxy
 {
@@ -24,22 +25,9 @@ class ResourceProxy
     public function __call($method, $arguments)
     {
         $result = call_user_func_array(array($this->resource, $method), $arguments);
-        if ($method == AbstractResource::METHOD_SEARCH) {
-            foreach ($result as $key => $item) {
-                if (is_object($item)) {
-                    $result[$key] = $this->normalizeObjectResult($item);
-                }
-            }
-        } else {
-            if (is_object($result)) {
-                $result = $this->normalizeObjectResult($result);
-            }
-        }
-
         if (in_array($method, $this->resource->supportMethods()) && $this->getFieldFilter($method)) {
             $this->filterResult($method, $result);
         }
-
         return $result;
     }
 
@@ -64,13 +52,5 @@ class ResourceProxy
         } else {
             $this->getFieldFilter($method)->filter($result);
         }
-
     }
-
-    private function normalizeObjectResult($result)
-    {
-        $normalizer = new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter());
-        return $normalizer->normalize($result);
-    }
-
 }
