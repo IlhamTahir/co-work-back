@@ -39,11 +39,8 @@ class UserStoryServiceImpl extends BaseService implements UserStoryService
     {
         // TODO: Implement searchUserStories() method.
         $em = $this->getDoctrine()->getManager();
-        $userStories = $em->getRepository('AppBundle:UserStory')->children();
-        $serilize = new Serializer();
-        foreach ($userStories as $key => $userStory) {
-            $userStories[$key] = $serilize->normalize($userStory);
-        }
+        $userStories = $em->getRepository('AppBundle:UserStory')->getNodesHierarchy();
+        $userStories = $em->getRepository('AppBundle:UserStory')->buildTree($userStories);
         return $userStories;
     }
 }

@@ -3,6 +3,7 @@
 namespace AppBundle\Service;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class BaseService extends ContainerAware
 {
@@ -50,5 +51,11 @@ class BaseService extends ContainerAware
     protected function getParameter($name)
     {
         return $this->container->getParameter($name);
+    }
+
+    protected function normalize($object)
+    {
+        $normalize = new ObjectNormalizer();
+        return $normalize->normalize($object);
     }
 }

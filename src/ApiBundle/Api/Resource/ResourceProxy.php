@@ -1,12 +1,7 @@
 <?php
 
 namespace ApiBundle\Api\Resource;
-
-use Doctrine\ORM\Mapping\Entity;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
-use Symfony\Component\Serializer\Serializer;
 
 class ResourceProxy
 {
